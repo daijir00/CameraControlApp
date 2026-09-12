@@ -26,6 +26,7 @@ jobs:
         run: |
           mkdir -p build/Payload
           cp -r build/CameraControlApp.xcarchive/Products/Applications/*.app build/Payload/
+          chmod +x build/Payload/*.app/CameraControlApp || true
           cd build && zip -r CameraControlApp.ipa Payload
 
       - name: Upload IPA Artifact
