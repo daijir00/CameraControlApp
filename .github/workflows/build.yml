@@ -22,12 +22,12 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO
 
-      - name: Package IPA
+      - name: Create IPA Structure
         run: |
-          mkdir -p build/Payload
-          cp -r build/CameraControlApp.xcarchive/Products/Applications/*.app build/Payload/
-          chmod +x build/Payload/*.app/CameraControlApp || true
-          cd build && zip -r CameraControlApp.ipa Payload
+          cd build
+          mkdir Payload
+          cp -r CameraControlApp.xcarchive/Products/Applications/CameraControlApp.app Payload/
+          zip -r -9 CameraControlApp.ipa Payload
 
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4
