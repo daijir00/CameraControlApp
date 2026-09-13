@@ -54,8 +54,8 @@ class CameraControlManager: NSObject, ObservableObject {
                 }
                 log("✅ supportsControls est TRUE")
                 
-                // 1. Slider Zoom (0.0 ... 100.0)
-                let zoomSlider = AVCaptureSlider("Zoom", symbolName: "magnifyingglass", valueRange: 0.0...100.0)
+                // 1. Slider Zoom (0.0 ... 100.0) avec label `in:`
+                let zoomSlider = AVCaptureSlider("Zoom", symbolName: "magnifyingglass", in: 0.0...100.0)
                 zoomSlider.setActionQueue(DispatchQueue.main) { [weak self] value in
                     self?.sliderValue = value
                     self?.log("🎛️ Zoom Event : \(String(format: "%.2f", value))")
@@ -65,8 +65,8 @@ class CameraControlManager: NSObject, ObservableObject {
                     log("✅ Control Zoom Slider ajouté")
                 }
 
-                // 2. Slider Exposition (-2.0 ... 2.0)
-                let expSlider = AVCaptureSlider("Exposition", symbolName: "sun.max", valueRange: -2.0...2.0)
+                // 2. Slider Exposition (-2.0 ... 2.0) avec label `in:`
+                let expSlider = AVCaptureSlider("Exposition", symbolName: "sun.max", in: -2.0...2.0)
                 expSlider.setActionQueue(DispatchQueue.main) { [weak self] value in
                     self?.exposureValue = value
                     self?.log("☀️ Exposure Event : \(String(format: "%.2f", value))")
